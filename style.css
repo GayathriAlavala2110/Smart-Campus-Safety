@@ -1,0 +1,507 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+    padding: 38px 40px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+}
+
+.header h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.header p {
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    margin-bottom: 18px;
+    color: #0f172a;
+    font-size: 24px;
+}
+
+#locationStatus {
+    margin-bottom: 18px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ================================
+   CARDS
+================================ */
+
+.card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.11);
+}
+
+.card h3 {
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+/* ================================
+   SENSOR GRID
+================================ */
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.sensor-grid .card {
+    min-height: 155px;
+}
+
+.value {
+    font-size: 30px;
+    font-weight: bold;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.card p {
+    color: #64748b;
+}
+
+/* ================================
+   CURRENT SAFETY STATUS
+================================ */
+
+.status {
+    margin-top: 30px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
+}
+
+.status h2 {
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+#riskValue {
+    display: inline-block;
+    margin: 12px 0;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 24px;
+    font-weight: bold;
+    background: #f8fafc;
+}
+
+#riskMessage {
+    font-weight: 600;
+    color: #334155;
+}
+
+#riskReason {
+    margin-top: 5px;
+    color: #64748b;
+}
+
+/* ================================
+   RISK COLORS
+================================ */
+
+.risk-normal {
+    color: #15803d !important;
+    background: #dcfce7 !important;
+}
+
+.risk-medium {
+    color: #c2410c !important;
+    background: #ffedd5 !important;
+}
+
+.risk-high {
+    color: #b91c1c !important;
+    background: #fee2e2 !important;
+}
+
+/* ================================
+   EMERGENCY ALERT
+================================ */
+
+.emergency-alert {
+    margin-top: 30px;
+    padding: 26px;
+    border-radius: 16px;
+    background: #fff1f2;
+    border: 2px solid #dc2626;
+    color: #991b1b;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.12);
+}
+
+.emergency-alert h2 {
+    margin-bottom: 8px;
+    color: #dc2626;
+}
+
+/* ================================
+   CAMPUS ZONES
+================================ */
+
+.zones {
+    margin-top: 30px;
+}
+
+.zone-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.zone-card {
+    text-align: center;
+    min-height: 170px;
+}
+
+.zone-card h3 {
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+.zone-status {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.zone-status.safe {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.zone-status.warning {
+    color: #c2410c;
+    background: #ffedd5;
+}
+
+.zone-status.danger {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+/* ================================
+   SECTIONS
+================================ */
+
+.response-section,
+.reports-section,
+.alerts-section,
+.assistant-section,
+.management-section {
+    margin-top: 35px;
+}
+
+.response-section h2,
+.reports-section h2,
+.alerts-section h2,
+.assistant-section h2,
+.management-section h2 {
+    margin-bottom: 18px;
+    color: #0f172a;
+}
+
+/* ================================
+   RESPONSE CENTER
+================================ */
+
+.response-section .card {
+    border-left: 5px solid #1e3a8a;
+}
+
+#responseStatus {
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#responseRisk {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0 15px;
+}
+
+#responseAction {
+    background: #f8fafc;
+    padding: 14px;
+    border-radius: 10px;
+    margin: 8px 0 18px;
+    color: #334155;
+}
+
+.response-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+button {
+    border: none;
+    padding: 12px 19px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    background: #1e3a8a;
+    color: white;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: #172554;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ================================
+   MANAGEMENT OVERVIEW
+================================ */
+
+#managementRisk {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#totalAlerts {
+    font-size: 30px;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+#managementResponse,
+#systemStatus {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+#systemStatus {
+    color: #15803d;
+}
+
+#managementUpdated {
+    color: #475569;
+}
+
+/* ================================
+   REPORT
+================================ */
+
+.report-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 30px;
+}
+
+.report-card p {
+    margin: 5px 0;
+    padding: 10px 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.report-card strong {
+    color: #334155;
+}
+
+/* ================================
+   ALERT HISTORY
+================================ */
+
+#alertHistory {
+    min-height: 90px;
+}
+
+.alert-item {
+    padding: 16px;
+    margin-bottom: 12px;
+    border-left: 5px solid #dc2626;
+    background: #fef2f2;
+    border-radius: 10px;
+}
+
+.alert-item p {
+    margin: 5px 0;
+}
+
+.alert-item strong {
+    color: #b91c1c;
+}
+
+.alert-item hr {
+    border: none;
+    border-top: 1px solid #fecaca;
+    margin-top: 12px;
+}
+
+/* ================================
+   AI SAFETY ASSISTANT
+================================ */
+
+.assistant-section .card {
+    border-left: 5px solid #2563eb;
+}
+
+.assistant-card input,
+input#assistantQuestion {
+    width: 100%;
+    padding: 13px 15px;
+    margin: 15px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input#assistantQuestion:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+#assistantAnswer {
+    margin-top: 15px;
+    padding: 16px;
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 9px;
+    color: #1e3a8a;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer {
+    margin-top: 50px;
+    padding: 28px 20px;
+    text-align: center;
+    background: #0f172a;
+    color: #ffffff;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.footer p:last-child {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 900px) {
+
+    .sensor-grid,
+    .zone-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .report-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 25px 20px;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+
+    .container {
+        margin-top: 25px;
+        padding: 0 15px;
+    }
+
+    .sensor-grid,
+    .zone-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card,
+    .status,
+    .emergency-alert {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 21px;
+    }
+
+    .value {
+        font-size: 27px;
+    }
+
+    #riskValue {
+        font-size: 21px;
+    }
+}
