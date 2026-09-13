@@ -1,0 +1,8 @@
+{
+    "temperature": 45,
+    "humidity": 90,
+    "air_quality": 70,
+    "smoke_level": 60,
+    "location": "Current Campus",
+    "status": "normal"
+}
