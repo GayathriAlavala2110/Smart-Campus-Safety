@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Campus Safety Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <h1>🛡️ Smart Campus Safety</h1>
+
+    <p>
+        AI-Enabled Smart Campus Safety & Emergency Response System Using IoT
+    </p>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN DASHBOARD
+===================================================== -->
+
+<main class="container">
+
+
+    <!-- =================================================
+         LIVE ENVIRONMENT MONITORING
+    ================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            📊 Campus Safety Dashboard
+        </h2>
+
+        <p id="locationStatus">
+            📍 Detecting presentation location...
+        </p>
+
+
+        <div class="sensor-grid">
+
+            <!-- Temperature -->
+
+            <div class="card">
+
+                <h3>🌡️ Temperature</h3>
+
+                <div id="temperatureValue"
+                     class="value">
+                    Loading...
+                </div>
+
+                <p>
+                    Live environmental data
+                </p>
+
+            </div>
+
+
+            <!-- Humidity -->
+
+            <div class="card">
+
+                <h3>💧 Humidity</h3>
+
+                <div id="humidityValue"
+                     class="value">
+                    Loading...
+                </div>
+
+                <p>
+                    Live environmental data
+                </p>
+
+            </div>
+
+
+            <!-- Air Quality -->
+
+            <div class="card">
+
+                <h3>🌫️ Air Quality</h3>
+
+                <div id="airQualityValue"
+                     class="value">
+                    Loading...
+                </div>
+
+                <p>
+                    Live environmental data
+                </p>
+
+            </div>
+
+
+            <!-- Fire Risk -->
+
+            <div class="card">
+
+                <h3>🔥 Fire Risk Indicator</h3>
+
+                <div id="smokeValue"
+                     class="value">
+                    Loading...
+                </div>
+
+                <p>
+                    Environmental risk indicator
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CURRENT SAFETY STATUS
+    ================================================== -->
+
+    <section class="status">
+
+        <h2>
+            🛡️ Current Safety Status
+        </h2>
+
+        <p>
+            Current Risk Level
+        </p>
+
+        <div id="riskValue"
+             class="risk-normal">
+
+            🟢 NORMAL
+
+        </div>
+
+        <p id="riskMessage">
+            Checking campus conditions...
+        </p>
+
+        <p id="riskReason">
+            Checking for safety risks...
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         EMERGENCY ALERT
+    ================================================== -->
+
+    <section id="emergencyAlert"
+             class="emergency-alert"
+             style="display:none;">
+
+        <h2>
+            🚨 Emergency Alert
+        </h2>
+
+        <p id="emergencyMessage">
+            Critical condition detected.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         CAMPUS SAFETY ZONES
+    ================================================== -->
+
+    <section class="zones">
+
+        <h2 class="section-title">
+            🛡️ Campus Safety Zones
+        </h2>
+
+        <div class="zone-grid">
+
+
+            <div class="card zone-card">
+
+                <h3>
+                    🏫 Main Block
+                </h3>
+
+                <div id="mainBlockStatus"
+                     class="zone-status safe">
+
+                    🟢 SAFE
+
+                </div>
+
+                <p>
+                    Live environmental monitoring
+                </p>
+
+            </div>
+
+
+            <div class="card zone-card">
+
+                <h3>
+                    🔬 ECE Laboratory
+                </h3>
+
+                <div id="eceLabStatus"
+                     class="zone-status safe">
+
+                    🟢 SAFE
+
+                </div>
+
+                <p>
+                    Live environmental monitoring
+                </p>
+
+            </div>
+
+
+            <div class="card zone-card">
+
+                <h3>
+                    📚 Library
+                </h3>
+
+                <div id="libraryStatus"
+                     class="zone-status safe">
+
+                    🟢 SAFE
+
+                </div>
+
+                <p>
+                    Live environmental monitoring
+                </p>
+
+            </div>
+
+
+            <div class="card zone-card">
+
+                <h3>
+                    🏟️ Ground
+                </h3>
+
+                <div id="groundStatus"
+                     class="zone-status safe">
+
+                    🟢 SAFE
+
+                </div>
+
+                <p>
+                    Live environmental monitoring
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         EMERGENCY RESPONSE CENTER
+    ================================================== -->
+
+    <section class="response-section">
+
+        <h2>
+            🚨 Emergency Response Center
+        </h2>
+
+        <div class="card">
+
+            <h3>
+                Current Response
+            </h3>
+
+            <p id="responseStatus">
+                🟢 No emergency response required
+            </p>
+
+            <p>
+                <strong>Detected Risk</strong>
+            </p>
+
+            <p id="responseRisk">
+                🟢 NORMAL
+            </p>
+
+            <p>
+                <strong>Recommended Action</strong>
+            </p>
+
+            <p id="responseAction">
+                Continue normal campus monitoring.
+            </p>
+
+            <div class="response-buttons">
+
+                <button onclick="acknowledgeAlert()">
+                    ✅ Acknowledge Alert
+                </button>
+
+                <button onclick="startResponse()">
+                    🚑 Start Response
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         MANAGEMENT OVERVIEW
+    ================================================== -->
+
+    <section class="management-section">
+
+        <h2>
+            📋 Management Overview
+        </h2>
+
+        <div class="sensor-grid">
+
+
+            <div class="card">
+
+                <h3>
+                    🛡️ Current Risk
+                </h3>
+
+                <div id="managementRisk"
+                     class="risk-normal">
+
+                    🟢 NORMAL
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🔔 Total Alerts
+                </h3>
+
+                <div id="totalAlerts">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🚨 Response Status
+                </h3>
+
+                <div id="managementResponse">
+                    READY
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🌐 System Status
+                </h3>
+
+                <div id="systemStatus">
+                    ONLINE
+                </div>
+
+            </div>
+
+        </div>
+
+        <p>
+            Last Updated:
+
+            <strong id="managementUpdated">
+                --
+            </strong>
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         SAFETY REPORT
+    ================================================== -->
+
+    <section class="reports-section">
+
+        <h2>
+            📊 Safety Report
+        </h2>
+
+        <div class="card report-card">
+
+            <p>
+                <strong>Report Time:</strong>
+
+                <span id="reportTime">
+                    --
+                </span>
+            </p>
+
+            <p>
+                <strong>Temperature:</strong>
+
+                <span id="reportTemperature">
+                    --
+                </span>
+            </p>
+
+            <p>
+                <strong>Humidity:</strong>
+
+                <span id="reportHumidity">
+                    --
+                </span>
+            </p>
+
+            <p>
+                <strong>Air Quality:</strong>
+
+                <span id="reportAirQuality">
+                    --
+                </span>
+            </p>
+
+            <p>
+                <strong>Fire Risk:</strong>
+
+                <span id="reportFireRisk">
+                    --
+                </span>
+            </p>
+
+            <p>
+                <strong>Overall Risk:</strong>
+
+                <span id="reportRisk">
+                    --
+                </span>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SAFETY ALERT HISTORY
+    ================================================== -->
+
+    <section class="alerts-section">
+
+        <h2>
+            🔔 Safety Alert History
+        </h2>
+
+        <div id="alertHistory"
+             class="card">
+
+            <p>
+                🟢 No safety alerts recorded yet.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         AI SAFETY ASSISTANT
+    ================================================== -->
+
+    <section class="assistant-section">
+
+        <h2>
+            🤖 AI Safety Assistant
+        </h2>
+
+        <div class="card">
+
+            <p>
+                Ask questions about campus safety,
+                risk levels, fire safety, air quality,
+                temperature or emergency response.
+            </p>
+
+            <input
+                type="text"
+                id="assistantQuestion"
+                placeholder="Ask a safety question..."
+            >
+
+            <button onclick="askAssistant()">
+                🤖 Ask Assistant
+            </button>
+
+            <p id="assistantAnswer">
+                Ask me a campus safety question.
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+        🛡️ Smart Campus Safety | AI-Enabled Safety Monitoring System
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     DASHBOARD JAVASCRIPT
+===================================================== -->
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+
+</body>
+
+</html>
