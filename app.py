@@ -27,7 +27,7 @@ def home():
 # /images/...
 # /videos/...
 # =========================
-@app.route("/static/<path:filename>")
+@app.route("/static/<path:filename>", endpoint="static")
 def static_files(filename):
     # First try normal folder structure
     normal_path = os.path.join("static", filename)
