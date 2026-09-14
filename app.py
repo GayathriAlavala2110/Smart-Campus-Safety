@@ -2,23 +2,34 @@ from flask import Flask, render_template, jsonify, send_from_directory
 import json
 import os
 
-app = Flask(__name__, static_folder=None)
+# Use the project root for templates and disable Flask's default static handler
+app = Flask(__name__, template_folder=".", static_folder=None)
 
-
-# ================= HOME =================
 
 @app.route("/")
 def home():
     return render_template("dashboard.html")
 
 
-# ================= SENSOR DATA =================
+def load_sensor_data():
+    # Works both locally and on Render
+    possible_files = [
+        "sensor_data.json",
+        os.path.join("data", "sensor_data.json")
+    ]
+
+    for file_path in possible_files:
+        if os.path.isfile(file_path):
+            with open(file_path, "r") as file:
+                return json.load(file)
+
+    raise FileNotFoundError("sensor_data.json not found")
+
 
 @app.route("/api/sensor-data")
 def sensor_data():
 
-    with open("sensor_data.json", "r") as file:
-        data = json.load(file)
+    data = load_sensor_data()
 
     temperature = data["temperature"]
     humidity = data["humidity"]
@@ -37,7 +48,7 @@ def sensor_data():
         warnings.append("Poor air quality detected")
 
     if smoke_level >= 50:
-        warnings.append("High fire-risk indicator detected")
+        warnings.append("High fire risk detected")
 
     if warnings:
         risk = "🔴 HIGH"
@@ -66,27 +77,18 @@ def sensor_data():
     return jsonify(data)
 
 
-# ================= STATIC FILES =================
-# Supports CSS, JavaScript, images and MP4 videos
-# stored in the GitHub repository root.
-
-@app.route("/static/<path:filename>",)
+# Custom static-file handler for files stored in the project root
+@app.route("/static/<path:filename>", endpoint="static")
 def static_files(filename):
 
-    # First check repository root
-    root_file = os.path.join(".", filename)
+    # Check project root first
+    if os.path.isfile(filename):
+        return send_from_directory(".", filename, conditional=True)
 
-    if os.path.isfile(root_file):
-        return send_from_directory(
-            ".",
-            filename,
-            conditional=True
-        )
+    # Then check the static folder
+    static_path = os.path.join("static", filename)
 
-    # Then check normal static folder
-    static_file = os.path.join("static", filename)
-
-    if os.path.isfile(static_file):
+    if os.path.isfile(static_path):
         return send_from_directory(
             "static",
             filename,
@@ -95,8 +97,6 @@ def static_files(filename):
 
     return "File not found", 404
 
-
-# ================= RUN =================
 
 if __name__ == "__main__":
     app.run(
