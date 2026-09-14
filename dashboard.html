@@ -3,559 +3,855 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>AI-Enabled Smart Campus Safety</title>
 
-    <title>Smart Campus Safety Dashboard</title>
-
+    <!-- CSS -->
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
+          href="{{ url_for('static', filename='style.css') }}?v=5">
 </head>
 
 <body>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header class="header">
 
-    <h1>🛡️ Smart Campus Safety</h1>
+    <h1>AI-Enabled Smart Campus Safety</h1>
 
     <p>
-        AI-Enabled Smart Campus Safety & Emergency Response System Using IoT
+        Smart Campus Safety & Emergency Response System
     </p>
 
 </header>
 
 
-<!-- =====================================================
-     MAIN DASHBOARD
-===================================================== -->
-
 <main class="container">
 
 
-    <!-- =================================================
-         LIVE ENVIRONMENT MONITORING
-    ================================================== -->
+<!-- ========================================================= -->
+<!-- CAMPUS OVERVIEW -->
+<!-- ========================================================= -->
 
-    <section>
+<section class="card">
 
-        <h2 class="section-title">
-            📊 Campus Safety Dashboard
-        </h2>
+    <h2>🏫 Campus Overview</h2>
 
-        <p id="locationStatus">
-            📍 Detecting presentation location...
-        </p>
+    <div class="feature-image">
 
+        <img
+            src="{{ url_for('static', filename='canpus-overview.jpg') }}"
+            alt="Campus Overview">
 
-        <div class="sensor-grid">
+    </div>
 
-            <!-- Temperature -->
+    <p>
+        Smart monitoring of important campus areas to support
+        faster safety awareness and emergency response.
+    </p>
 
-            <div class="card">
-
-                <h3>🌡️ Temperature</h3>
-
-                <div id="temperatureValue"
-                     class="value">
-                    Loading...
-                </div>
-
-                <p>
-                    Live environmental data
-                </p>
-
-            </div>
+</section>
 
 
-            <!-- Humidity -->
 
-            <div class="card">
+<!-- ========================================================= -->
+<!-- ENVIRONMENTAL MONITORING -->
+<!-- ========================================================= -->
 
-                <h3>💧 Humidity</h3>
+<section class="card">
 
-                <div id="humidityValue"
-                     class="value">
-                    Loading...
-                </div>
+    <h2>🌐 Live Environmental Monitoring</h2>
 
-                <p>
-                    Live environmental data
-                </p>
-
-            </div>
+    <p id="locationStatus">
+        📍 Requesting presentation location...
+    </p>
 
 
-            <!-- Air Quality -->
+    <div class="feature-image">
 
-            <div class="card">
+        <img
+            src="{{ url_for('static', filename='environmental-monitoring.jpg') }}"
+            alt="Environmental Monitoring">
 
-                <h3>🌫️ Air Quality</h3>
-
-                <div id="airQualityValue"
-                     class="value">
-                    Loading...
-                </div>
-
-                <p>
-                    Live environmental data
-                </p>
-
-            </div>
+    </div>
 
 
-            <!-- Fire Risk -->
 
-            <div class="card">
+    <!-- SENSOR GRID -->
 
-                <h3>🔥 Fire Risk Indicator</h3>
+    <div class="sensor-grid">
 
-                <div id="smokeValue"
-                     class="value">
-                    Loading...
-                </div>
 
-                <p>
-                    Environmental risk indicator
-                </p>
+        <!-- TEMPERATURE -->
 
-            </div>
+        <div class="card">
+
+            <h3>🌡️ Temperature</h3>
+
+            <p
+                class="value"
+                id="temperatureValue">
+                --°C
+            </p>
+
+            <p>
+                Live environmental temperature
+            </p>
 
         </div>
 
-    </section>
 
 
-    <!-- =================================================
-         CURRENT SAFETY STATUS
-    ================================================== -->
+        <!-- HUMIDITY -->
 
-    <section class="status">
+        <div class="card">
 
-        <h2>
-            🛡️ Current Safety Status
-        </h2>
+            <h3>💧 Humidity</h3>
 
-        <p>
-            Current Risk Level
-        </p>
+            <p
+                class="value"
+                id="humidityValue">
+                --%
+            </p>
 
-        <div id="riskValue"
-             class="risk-normal">
+            <p>
+                Current humidity level
+            </p>
+
+        </div>
+
+
+
+        <!-- AIR QUALITY -->
+
+        <div class="card">
+
+            <h3>🌫️ Air Quality</h3>
+
+            <p
+                class="value"
+                id="airQualityValue">
+                Loading...
+            </p>
+
+            <p>
+                PM2.5 environmental indicator
+            </p>
+
+        </div>
+
+
+
+        <!-- FIRE RISK -->
+
+        <div class="card">
+
+            <h3>🔥 Fire Risk Indicator</h3>
+
+            <p
+                class="value"
+                id="smokeValue">
+                Loading...
+            </p>
+
+            <p>
+                Automated environmental fire-risk indicator
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SMART CAMPUS MONITORING VIDEO -->
+
+    <div class="feature-video">
+
+        <video
+            controls
+            playsinline
+            preload="metadata"
+            width="100%"
+            style="
+                max-width:420px;
+                height:auto;
+                display:block;
+                margin:auto;
+            ">
+
+            <source
+                src="{{ url_for('static', filename='smart_campus_monitoring.mp4') }}"
+                type="video/mp4">
+
+            Your browser does not support the video tag.
+
+        </video>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- CURRENT SAFETY STATUS -->
+<!-- ========================================================= -->
+
+<section class="status">
+
+    <h2>🛡️ Current Safety Status</h2>
+
+    <p
+        id="riskValue"
+        class="risk-normal">
+
+        🟢 NORMAL
+
+    </p>
+
+
+    <p id="riskMessage">
+
+        Checking campus conditions...
+
+    </p>
+
+
+    <p id="riskReason">
+
+        Checking for safety risks...
+
+    </p>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- FIRE RISK MONITORING -->
+<!-- ========================================================= -->
+
+<section class="card">
+
+    <h2>🔥 Fire Risk Monitoring</h2>
+
+
+    <div class="feature-image">
+
+        <img
+            src="{{ url_for('static', filename='fire-risk.jpg') }}"
+            alt="Fire Risk">
+
+    </div>
+
+
+    <p>
+
+        The system automatically evaluates environmental
+        conditions and generates a fire-risk indicator.
+
+    </p>
+
+
+    <p>
+
+        <strong>
+            Current Fire Risk:
+        </strong>
+
+        <span id="fireRiskMonitoringValue">
+            --
+        </span>
+
+    </p>
+
+
+
+    <!-- FIRE SAFETY VIDEO -->
+
+    <div class="feature-video">
+
+        <video
+            controls
+            playsinline
+            preload="metadata"
+            width="100%"
+            style="
+                max-width:420px;
+                height:auto;
+                display:block;
+                margin:auto;
+            ">
+
+            <source
+                src="{{ url_for('static', filename='fire_safety.mp4') }}"
+                type="video/mp4">
+
+            Your browser does not support the video tag.
+
+        </video>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- EMERGENCY ALERT -->
+<!-- ========================================================= -->
+
+<section
+    class="alert"
+    id="emergencyAlert"
+    style="display:none;">
+
+    <h2>🚨 Emergency Alert</h2>
+
+    <p id="emergencyMessage">
+
+        Critical safety condition detected.
+
+    </p>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- CAMPUS SAFETY ZONES -->
+<!-- ========================================================= -->
+
+<section class="card">
+
+    <h2>📍 Campus Safety Zones</h2>
+
+    <p>
+
+        Automated safety status for important campus areas.
+
+    </p>
+
+
+    <div class="zone-grid">
+
+
+        <!-- MAIN BLOCK -->
+
+        <div class="card zone-card">
+
+            <h3>🏢 Main Block</h3>
+
+            <p>
+                Academic and administrative area
+            </p>
+
+            <span
+                id="mainBlockStatus"
+                class="zone-status safe">
+
+                🟢 SAFE
+
+            </span>
+
+        </div>
+
+
+
+        <!-- ECE LAB -->
+
+        <div class="card zone-card">
+
+            <h3>💻 ECE Lab</h3>
+
+            <p>
+                Electronics laboratory area
+            </p>
+
+            <span
+                id="eceLabStatus"
+                class="zone-status safe">
+
+                🟢 SAFE
+
+            </span>
+
+        </div>
+
+
+
+        <!-- LIBRARY -->
+
+        <div class="card zone-card">
+
+            <h3>📚 Library</h3>
+
+            <p>
+                Student learning area
+            </p>
+
+            <span
+                id="libraryStatus"
+                class="zone-status safe">
+
+                🟢 SAFE
+
+            </span>
+
+        </div>
+
+
+
+        <!-- GROUND -->
+
+        <div class="card zone-card">
+
+            <h3>🏟️ Ground</h3>
+
+            <p>
+                Outdoor campus area
+            </p>
+
+            <span
+                id="groundStatus"
+                class="zone-status safe">
+
+                🟢 SAFE
+
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- EMERGENCY RESPONSE CENTER -->
+<!-- ========================================================= -->
+
+<section class="card response-section">
+
+    <h2>🚑 Emergency Response Center</h2>
+
+
+    <div class="feature-image">
+
+        <img
+            src="{{ url_for('static', filename='emergency-response.jpg') }}"
+            alt="Emergency Response">
+
+    </div>
+
+
+    <p>
+
+        <strong>
+            Status:
+        </strong>
+
+        <span id="responseStatus">
+
+            🟢 No emergency response required
+
+        </span>
+
+    </p>
+
+
+    <p>
+
+        <strong>
+            Risk:
+        </strong>
+
+        <span id="responseRisk">
 
             🟢 NORMAL
 
-        </div>
+        </span>
 
-        <p id="riskMessage">
-            Checking campus conditions...
-        </p>
-
-        <p id="riskReason">
-            Checking for safety risks...
-        </p>
-
-    </section>
+    </p>
 
 
-    <!-- =================================================
-         EMERGENCY ALERT
-    ================================================== -->
+    <p>
 
-    <section id="emergencyAlert"
-             class="emergency-alert"
-             style="display:none;">
+        <strong>
+            Recommended Action:
+        </strong>
 
-        <h2>
-            🚨 Emergency Alert
-        </h2>
+        <span id="responseAction">
 
-        <p id="emergencyMessage">
-            Critical condition detected.
-        </p>
+            Continue normal campus monitoring.
 
-    </section>
+        </span>
+
+    </p>
 
 
-    <!-- =================================================
-         CAMPUS SAFETY ZONES
-    ================================================== -->
 
-    <section class="zones">
+    <!-- RESPONSE BUTTONS -->
 
-        <h2 class="section-title">
-            🛡️ Campus Safety Zones
-        </h2>
+    <div class="response-buttons">
 
-        <div class="zone-grid">
+        <button onclick="acknowledgeAlert()">
 
+            ✅ Acknowledge Alert
 
-            <div class="card zone-card">
-
-                <h3>
-                    🏫 Main Block
-                </h3>
-
-                <div id="mainBlockStatus"
-                     class="zone-status safe">
-
-                    🟢 SAFE
-
-                </div>
-
-                <p>
-                    Live environmental monitoring
-                </p>
-
-            </div>
+        </button>
 
 
-            <div class="card zone-card">
+        <button onclick="startResponse()">
 
-                <h3>
-                    🔬 ECE Laboratory
-                </h3>
+            🚑 Start Response
 
-                <div id="eceLabStatus"
-                     class="zone-status safe">
+        </button>
 
-                    🟢 SAFE
-
-                </div>
-
-                <p>
-                    Live environmental monitoring
-                </p>
-
-            </div>
+    </div>
 
 
-            <div class="card zone-card">
 
-                <h3>
-                    📚 Library
-                </h3>
+    <!-- EMERGENCY RESPONSE VIDEO -->
 
-                <div id="libraryStatus"
-                     class="zone-status safe">
+    <div class="feature-video">
 
-                    🟢 SAFE
+        <video
+            controls
+            playsinline
+            preload="metadata"
+            width="100%"
+            style="
+                max-width:420px;
+                height:auto;
+                display:block;
+                margin:auto;
+                background:#000;
+            ">
 
-                </div>
+            <source
+                src="{{ url_for('static', filename='emergency_response.mp4') }}"
+                type="video/mp4">
 
-                <p>
-                    Live environmental monitoring
-                </p>
+            Your browser does not support the video tag.
 
-            </div>
+        </video>
 
+    </div>
 
-            <div class="card zone-card">
-
-                <h3>
-                    🏟️ Ground
-                </h3>
-
-                <div id="groundStatus"
-                     class="zone-status safe">
-
-                    🟢 SAFE
-
-                </div>
-
-                <p>
-                    Live environmental monitoring
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- =================================================
-         EMERGENCY RESPONSE CENTER
-    ================================================== -->
 
-    <section class="response-section">
+<!-- ========================================================= -->
+<!-- MANAGEMENT OVERVIEW -->
+<!-- ========================================================= -->
 
-        <h2>
-            🚨 Emergency Response Center
-        </h2>
+<section class="card management-section">
 
-        <div class="card">
+    <h2>🏢 Management Overview</h2>
+
+
+    <div class="feature-image">
+
+        <img
+            src="{{ url_for('static', filename='management-dashboard.jpg') }}"
+            alt="Management Dashboard">
+
+    </div>
+
+
+    <p>
+
+        High-level campus safety information for management.
+
+    </p>
+
+
+
+    <div class="management-grid">
+
+
+        <!-- CURRENT RISK -->
+
+        <div class="management-box">
 
             <h3>
-                Current Response
+                Current Risk
             </h3>
 
-            <p id="responseStatus">
-                🟢 No emergency response required
-            </p>
+            <p
+                id="managementRisk"
+                class="risk-normal">
 
-            <p>
-                <strong>Detected Risk</strong>
-            </p>
-
-            <p id="responseRisk">
                 🟢 NORMAL
+
             </p>
-
-            <p>
-                <strong>Recommended Action</strong>
-            </p>
-
-            <p id="responseAction">
-                Continue normal campus monitoring.
-            </p>
-
-            <div class="response-buttons">
-
-                <button onclick="acknowledgeAlert()">
-                    ✅ Acknowledge Alert
-                </button>
-
-                <button onclick="startResponse()">
-                    🚑 Start Response
-                </button>
-
-            </div>
 
         </div>
 
-    </section>
 
 
-    <!-- =================================================
-         MANAGEMENT OVERVIEW
-    ================================================== -->
+        <!-- TOTAL ALERTS -->
 
-    <section class="management-section">
+        <div class="management-box">
 
-        <h2>
-            📋 Management Overview
-        </h2>
+            <h3>
+                Total Alerts
+            </h3>
 
-        <div class="sensor-grid">
+            <p id="totalAlerts">
 
+                0
 
-            <div class="card">
-
-                <h3>
-                    🛡️ Current Risk
-                </h3>
-
-                <div id="managementRisk"
-                     class="risk-normal">
-
-                    🟢 NORMAL
-
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    🔔 Total Alerts
-                </h3>
-
-                <div id="totalAlerts">
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    🚨 Response Status
-                </h3>
-
-                <div id="managementResponse">
-                    READY
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    🌐 System Status
-                </h3>
-
-                <div id="systemStatus">
-                    ONLINE
-                </div>
-
-            </div>
+            </p>
 
         </div>
+
+
+
+        <!-- RESPONSE STATUS -->
+
+        <div class="management-box">
+
+            <h3>
+                Response Status
+            </h3>
+
+            <p id="managementResponse">
+
+                READY
+
+            </p>
+
+        </div>
+
+
+
+        <!-- SYSTEM STATUS -->
+
+        <div class="management-box">
+
+            <h3>
+                System Status
+            </h3>
+
+            <p id="systemStatus">
+
+                ONLINE
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <p>
+
+        🕒 Last Updated:
+
+        <span id="managementUpdated">
+
+            --
+
+        </span>
+
+    </p>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- SAFETY REPORT -->
+<!-- ========================================================= -->
+
+<section class="card reports-section">
+
+    <h2>📊 Safety Report</h2>
+
+
+    <div class="report-card">
+
 
         <p>
-            Last Updated:
 
-            <strong id="managementUpdated">
+            🌡️ Temperature:
+
+            <span id="reportTemperature">
                 --
-            </strong>
+            </span>
+
         </p>
 
-    </section>
+
+        <p>
+
+            💧 Humidity:
+
+            <span id="reportHumidity">
+                --
+            </span>
+
+        </p>
 
 
-    <!-- =================================================
-         SAFETY REPORT
-    ================================================== -->
+        <p>
 
-    <section class="reports-section">
+            🌫️ Air Quality:
 
-        <h2>
-            📊 Safety Report
-        </h2>
+            <span id="reportAirQuality">
+                --
+            </span>
 
-        <div class="card report-card">
-
-            <p>
-                <strong>Report Time:</strong>
-
-                <span id="reportTime">
-                    --
-                </span>
-            </p>
-
-            <p>
-                <strong>Temperature:</strong>
-
-                <span id="reportTemperature">
-                    --
-                </span>
-            </p>
-
-            <p>
-                <strong>Humidity:</strong>
-
-                <span id="reportHumidity">
-                    --
-                </span>
-            </p>
-
-            <p>
-                <strong>Air Quality:</strong>
-
-                <span id="reportAirQuality">
-                    --
-                </span>
-            </p>
-
-            <p>
-                <strong>Fire Risk:</strong>
-
-                <span id="reportFireRisk">
-                    --
-                </span>
-            </p>
-
-            <p>
-                <strong>Overall Risk:</strong>
-
-                <span id="reportRisk">
-                    --
-                </span>
-            </p>
-
-        </div>
-
-    </section>
+        </p>
 
 
-    <!-- =================================================
-         SAFETY ALERT HISTORY
-    ================================================== -->
+        <p>
 
-    <section class="alerts-section">
+            🔥 Fire Risk:
 
-        <h2>
-            🔔 Safety Alert History
-        </h2>
+            <span id="reportFireRisk">
+                --
+            </span>
 
-        <div id="alertHistory"
-             class="card">
-
-            <p>
-                🟢 No safety alerts recorded yet.
-            </p>
-
-        </div>
-
-    </section>
+        </p>
 
 
-    <!-- =================================================
-         AI SAFETY ASSISTANT
-    ================================================== -->
+        <p>
 
-    <section class="assistant-section">
+            🛡️ Current Risk:
 
-        <h2>
-            🤖 AI Safety Assistant
-        </h2>
+            <span id="reportRisk">
+                --
+            </span>
 
-        <div class="card">
+        </p>
 
-            <p>
-                Ask questions about campus safety,
-                risk levels, fire safety, air quality,
-                temperature or emergency response.
-            </p>
 
-            <input
-                type="text"
-                id="assistantQuestion"
-                placeholder="Ask a safety question..."
-            >
+        <p>
 
-            <button onclick="askAssistant()">
-                🤖 Ask Assistant
-            </button>
+            🕒 Report Time:
 
-            <p id="assistantAnswer">
-                Ask me a campus safety question.
-            </p>
+            <span id="reportTime">
+                --
+            </span>
 
-        </div>
+        </p>
 
-    </section>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- ALERT HISTORY -->
+<!-- ========================================================= -->
+
+<section class="card alerts-section">
+
+    <h2>
+        🔔 Safety Notification & Alert History
+    </h2>
+
+
+    <div id="alertHistory">
+
+        <p>
+            🟢 No safety alerts recorded yet.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- AI SAFETY ASSISTANT -->
+<!-- ========================================================= -->
+
+<section class="card assistant-section">
+
+    <h2>
+        🤖 AI Safety Assistant
+    </h2>
+
+
+    <p>
+
+        Ask the safety assistant about campus risk,
+        fire safety, air quality, temperature,
+        or emergency response.
+
+    </p>
+
+
+    <input
+        type="text"
+        id="assistantQuestion"
+        placeholder="Ask a safety question...">
+
+
+    <button onclick="askAssistant()">
+
+        Ask Assistant
+
+    </button>
+
+
+    <p id="assistantAnswer">
+
+        🤖 Ready to help with campus safety.
+
+    </p>
+
+</section>
 
 
 </main>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
 
 <footer class="footer">
 
     <p>
-        🛡️ Smart Campus Safety | AI-Enabled Safety Monitoring System
+
+        AI-Enabled Smart Campus Safety &
+        Emergency Response System
+
+    </p>
+
+
+    <p>
+
+        IoT-Ready • Live Environmental Monitoring •
+        Automated Risk Detection
+
     </p>
 
 </footer>
 
 
-<!-- =====================================================
-     DASHBOARD JAVASCRIPT
-===================================================== -->
 
-<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script
+    src="{{ url_for('static', filename='dashboard.js') }}?v=5">
+</script>
 
 
 </body>
