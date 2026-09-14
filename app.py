@@ -70,7 +70,7 @@ def sensor_data():
 # Supports CSS, JavaScript, images and MP4 videos
 # stored in the GitHub repository root.
 
-@app.route("/static/<path:filename>", endpoint="static")
+@app.route("/static/<path:filename>",)
 def static_files(filename):
 
     # First check repository root
