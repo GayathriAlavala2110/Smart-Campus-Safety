@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify, send_from_directory
 import json
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=None)
 
 
 # ================= HOME =================
